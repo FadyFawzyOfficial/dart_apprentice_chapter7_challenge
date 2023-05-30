@@ -53,11 +53,14 @@ class Name {
 
   Name({
     required this.givenName,
-    this.surname = '',
+    this.surname,
     this.surnameIsFirst = false,
   });
 
   @override
-  String toString() =>
-      surnameIsFirst ? '$surname $givenName' : '$givenName $surname';
+  String toString() => surname == null
+      ? givenName
+      : surnameIsFirst
+          ? '$surname $givenName'
+          : '$givenName $surname';
 }
