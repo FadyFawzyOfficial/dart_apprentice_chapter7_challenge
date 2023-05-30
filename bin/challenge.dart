@@ -2,6 +2,7 @@ import 'dart:math';
 
 void main() {
   challenge1();
+  challenge2();
 }
 
 /// Challenge 1: Random nothings
@@ -18,4 +19,45 @@ void challenge1() {
 
   int result = randomNothings() ?? 0;
   print(result);
+}
+
+/// Challenge 2: Naming customs
+///
+/// People around the world have different customs for giving names to
+/// children. It would be difficult to create a data class to accurately
+/// represent them all, but try it like this:
+///
+/// - Create a class called `Name` with `givenName` and `surname` properties.
+/// - Some people write the surname last and some write it first. Add a
+///   Boolean property called `surnameIsFirst` to keep track of this.
+/// - Not everyone in the world has a surname.
+/// - Add a `toString` method that prints the full name.
+void challenge2() {
+  final fady = Name(givenName: 'Fady', surname: 'Fawzy');
+  final phillip = Name(
+    givenName: 'Phillip',
+    surname: 'Fawzy',
+    surnameIsFirst: true,
+  );
+  final peter = Name(givenName: 'Peter');
+
+  print(fady);
+  print(phillip);
+  print(peter);
+}
+
+class Name {
+  final String givenName;
+  final String? surname;
+  final bool surnameIsFirst;
+
+  Name({
+    required this.givenName,
+    this.surname = '',
+    this.surnameIsFirst = false,
+  });
+
+  @override
+  String toString() =>
+      surnameIsFirst ? '$surname $givenName' : '$givenName $surname';
 }
